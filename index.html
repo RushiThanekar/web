@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <script src="https://cesium.com/downloads/cesiumjs/releases/1.118/Build/Cesium/Cesium.js"></script>
+  <link href="https://cesium.com/downloads/cesiumjs/releases/1.118/Build/Cesium/Widgets/widgets.css" rel="stylesheet">
+  <!-- <link href="style.css" rel="stylesheet"> -->
+  <style>
+    html,
+    body {
+  overflow: hidden;
+  margin: 0px;
+  padding: 0px;
+  height: 100vh;
+}
+  </style>
+</head>
+<body>
+  <div id="cesiumContainer"></div>
+  <script type="module">
+
+    Cesium.Ion.defaultAccessToken = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJqdGkiOiJhOWQzYmZkZC1hY2VkLTQwMGEtYTc5Yy0zOTUzMmUxM2NlNjAiLCJpZCI6MjA4MjY3LCJpYXQiOjE3MTI5MDI0Mzh9.v0qomykEkebRogti0Zk80o6NFu9L1T54HnMe103Ynp0';
+
+    const viewer = new Cesium.Viewer('cesiumContainer', {
+      terrain: Cesium.Terrain.fromWorldTerrain(),
+    });
+
+    // Fly the camera to Denver, Colorado at the given longitude, latitude, and height.
+    viewer.camera.flyTo({
+      destination: Cesium.Cartesian3.fromDegrees(73.8441094433745, 18.643787765106115, 1200)
+    });
+    // Add Cesium OSM Buildings.
+
+    
+    const tileset = viewer.scene.primitives.add(
+  await Cesium.Cesium3DTileset.fromIonAssetId(2658364),
+);
+
+
+  </script>
+</body>
+</html>
